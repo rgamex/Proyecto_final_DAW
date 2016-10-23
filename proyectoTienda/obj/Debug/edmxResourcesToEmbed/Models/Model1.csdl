@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TiendaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CategoriasSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="hijo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="ProductosSet" Relationship="Self.FK_CategoriasProductos" FromRole="CategoriasSet" ToRole="ProductosSet" />
+  </EntityType>
+  <EntityType Name="FabricanteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Productos_Id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ProductosSet" Relationship="Self.FK_ProductosFabricante" FromRole="FabricanteSet" ToRole="ProductosSet" />
+  </EntityType>
+  <EntityType Name="ProductosSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Precio" Type="Int32" Nullable="false" />
+    <Property Name="Oferta" Type="Boolean" Nullable="false" />
+    <Property Name="Nuevo" Type="Boolean" Nullable="false" />
+    <Property Name="Promocion" Type="Int32" Nullable="false" />
+    <Property Name="Disponible" Type="Boolean" Nullable="false" />
+    <Property Name="Reservar" Type="Boolean" Nullable="false" />
+    <Property Name="Stock" Type="Boolean" Nullable="false" />
+    <Property Name="desc_corta" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="desc_larga" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Garantia" Type="Int32" Nullable="false" />
+    <Property Name="CategoriasId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="CategoriasSet" Relationship="Self.FK_CategoriasProductos" FromRole="ProductosSet" ToRole="CategoriasSet" />
+    <NavigationProperty Name="FabricanteSet" Relationship="Self.FK_ProductosFabricante" FromRole="ProductosSet" ToRole="FabricanteSet" />
+  </EntityType>
+  <Association Name="FK_CategoriasProductos">
+    <End Role="CategoriasSet" Type="Self.CategoriasSet" Multiplicity="1" />
+    <End Role="ProductosSet" Type="Self.ProductosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriasSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductosSet">
+        <PropertyRef Name="CategoriasId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductosFabricante">
+    <End Role="ProductosSet" Type="Self.ProductosSet" Multiplicity="1" />
+    <End Role="FabricanteSet" Type="Self.FabricanteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductosSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FabricanteSet">
+        <PropertyRef Name="Productos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TiendaBD" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CategoriasSet" EntityType="Self.CategoriasSet" />
+    <EntitySet Name="FabricanteSet" EntityType="Self.FabricanteSet" />
+    <EntitySet Name="ProductosSet" EntityType="Self.ProductosSet" />
+    <AssociationSet Name="FK_CategoriasProductos" Association="Self.FK_CategoriasProductos">
+      <End Role="CategoriasSet" EntitySet="CategoriasSet" />
+      <End Role="ProductosSet" EntitySet="ProductosSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductosFabricante" Association="Self.FK_ProductosFabricante">
+      <End Role="ProductosSet" EntitySet="ProductosSet" />
+      <End Role="FabricanteSet" EntitySet="FabricanteSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

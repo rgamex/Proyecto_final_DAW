@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TiendaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CategoriasSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descripcion" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="hijo" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FabricanteSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Productos_Id" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProductosSet">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nombre" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Precio" Type="int" Nullable="false" />
+    <Property Name="Oferta" Type="bit" Nullable="false" />
+    <Property Name="Nuevo" Type="bit" Nullable="false" />
+    <Property Name="Promocion" Type="int" Nullable="false" />
+    <Property Name="Disponible" Type="bit" Nullable="false" />
+    <Property Name="Reservar" Type="bit" Nullable="false" />
+    <Property Name="Stock" Type="bit" Nullable="false" />
+    <Property Name="desc_corta" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="desc_larga" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Garantia" Type="int" Nullable="false" />
+    <Property Name="CategoriasId" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CategoriasProductos">
+    <End Role="CategoriasSet" Type="Self.CategoriasSet" Multiplicity="1" />
+    <End Role="ProductosSet" Type="Self.ProductosSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriasSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ProductosSet">
+        <PropertyRef Name="CategoriasId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ProductosFabricante">
+    <End Role="ProductosSet" Type="Self.ProductosSet" Multiplicity="1" />
+    <End Role="FabricanteSet" Type="Self.FabricanteSet" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ProductosSet">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FabricanteSet">
+        <PropertyRef Name="Productos_Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TiendaModelStoreContainer">
+    <EntitySet Name="CategoriasSet" EntityType="Self.CategoriasSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FabricanteSet" EntityType="Self.FabricanteSet" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProductosSet" EntityType="Self.ProductosSet" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CategoriasProductos" Association="Self.FK_CategoriasProductos">
+      <End Role="CategoriasSet" EntitySet="CategoriasSet" />
+      <End Role="ProductosSet" EntitySet="ProductosSet" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProductosFabricante" Association="Self.FK_ProductosFabricante">
+      <End Role="ProductosSet" EntitySet="ProductosSet" />
+      <End Role="FabricanteSet" EntitySet="FabricanteSet" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

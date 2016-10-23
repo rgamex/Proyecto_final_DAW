@@ -1,0 +1,103 @@
+﻿@model IEnumerable<proyectoTienda.Models.Producto>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Inicio</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Precio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oferta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nuevo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Promocion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Reservar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Stock)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Garantia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoriasId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_fabricante)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Precio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oferta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nuevo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Promocion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Disponible)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Reservar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Stock)
+        </td>
+     
+        <td>
+            @Html.DisplayFor(modelItem => item.Garantia)
+        </td>
+        <td>
+            @if (item.CategoriasId == ViewBag.nombreCat)
+            {
+                @Html.DisplayFor(modelItem => item.CategoriasId)
+            }
+           
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_fabricante)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Detalles", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Borrar", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

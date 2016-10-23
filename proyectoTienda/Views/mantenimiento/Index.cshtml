@@ -1,0 +1,47 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Mantenimiento</h2>
+
+<div id="contenedor_mantenimiento" class="container">
+ 
+    <div id="productos_man" class="col-xs-6 col-sm-4" >
+
+        <a href="@Url.Action("Index","Productos")">
+            <p id="descripcion_man">Productos</p>
+            <img src="~/img/prod.png" />
+        </a>
+
+    </div>       
+
+    <div id="categorias_man" class="col-sm-4 col-xs-6">
+
+        <a href="@Url.Action("Index","Productos")">
+            <p id="descripcion_man">Categorias</p>
+            <img src="~/img/cat.png" />
+        </a>
+
+    </div> 
+
+    <div id="fabricantes_man" class="col-sm-4 col-xs-12">
+
+        <a href="@Url.Action("Index","Productos")">
+            <p id="descripcion_man">Fabricantes</p>
+            <img src="~/img/fabricante.png" />
+        </a>
+
+    </div> 
+
+
+
+
+
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

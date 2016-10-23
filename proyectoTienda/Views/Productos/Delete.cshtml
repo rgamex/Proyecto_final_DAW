@@ -1,0 +1,128 @@
+﻿@model proyectoTienda.Models.Producto
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>¿Estás seguro que quieres borrar este producto?</h3>
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Precio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oferta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oferta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nuevo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nuevo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Promocion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Promocion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Disponible)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Reservar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Reservar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desc_corta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desc_corta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.desc_larga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.desc_larga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Garantia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Garantia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CategoriasId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CategoriasId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_fabricante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_fabricante)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-default" /> |
+            @Html.ActionLink("Atrás", "Index")
+        </div>
+    }
+</div>

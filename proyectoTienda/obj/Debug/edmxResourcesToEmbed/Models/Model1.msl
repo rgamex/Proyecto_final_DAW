@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="TiendaModelStoreContainer" CdmEntityContainer="TiendaBD">
+    <EntitySetMapping Name="CategoriasSet">
+      <EntityTypeMapping TypeName="TiendaModel.CategoriasSet">
+        <MappingFragment StoreEntitySet="CategoriasSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+          <ScalarProperty Name="hijo" ColumnName="hijo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FabricanteSet">
+      <EntityTypeMapping TypeName="TiendaModel.FabricanteSet">
+        <MappingFragment StoreEntitySet="FabricanteSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Productos_Id" ColumnName="Productos_Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ProductosSet">
+      <EntityTypeMapping TypeName="TiendaModel.ProductosSet">
+        <MappingFragment StoreEntitySet="ProductosSet">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Precio" ColumnName="Precio" />
+          <ScalarProperty Name="Oferta" ColumnName="Oferta" />
+          <ScalarProperty Name="Nuevo" ColumnName="Nuevo" />
+          <ScalarProperty Name="Promocion" ColumnName="Promocion" />
+          <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+          <ScalarProperty Name="Reservar" ColumnName="Reservar" />
+          <ScalarProperty Name="Stock" ColumnName="Stock" />
+          <ScalarProperty Name="desc_corta" ColumnName="desc_corta" />
+          <ScalarProperty Name="desc_larga" ColumnName="desc_larga" />
+          <ScalarProperty Name="Garantia" ColumnName="Garantia" />
+          <ScalarProperty Name="CategoriasId" ColumnName="CategoriasId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

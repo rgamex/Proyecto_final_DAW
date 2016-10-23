@@ -1,0 +1,42 @@
+﻿@model proyectoTienda.Models.img_prod
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>img_prod</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ruta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ruta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descripción)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descripción)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.id_producto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.id_producto)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
